@@ -164,4 +164,8 @@
 .label {
   color: #000;
   margin-left: 5%;
+  font-size: 15px;
+}
+.strikeOut {
+  text-decoration: line-through;
 }

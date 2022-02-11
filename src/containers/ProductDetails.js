@@ -6,6 +6,7 @@ import {
   selectedProduct,
   removeSelectedProduct,
 } from "../redux/actions/productActions";
+import Counter from "./Counter";
 
 export default function ProductDetails() {
   const product = useSelector((state) => state.product);
@@ -60,6 +61,9 @@ export default function ProductDetails() {
                     <i className="shop icon"></i>
                   </div>
                   <div className="visible content">Add to Cart</div>
+                </div>
+                <div className="counter">
+                  <Counter />
                 </div>
               </div>
             </div>

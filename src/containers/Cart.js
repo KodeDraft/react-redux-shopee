@@ -37,10 +37,15 @@ export default function Cart() {
       <div className="ui grid container">{renderProducts}</div>
       <div className="details">
         <br />
-        <span className="label">Discounted Amount: $ {discount}</span>
+        <br />
+        <span className="label strikeOut">Original Price $ {totalPrice}</span>
+        <br />
+        <span className="label">
+          Discount Price $ {parseFloat(discount).toFixed(2)}
+        </span>
         <br />
         <span className="label marginTopSmall">
-          Total Amount: $ {totalPrice - discount}
+          Total Amount: $ {parseFloat(totalPrice - discount).toFixed(2)}
         </span>
         <button className="navigationBtn">CHECKOUT / BUY</button>
       </div>
