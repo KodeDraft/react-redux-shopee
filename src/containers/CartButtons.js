@@ -3,11 +3,16 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function CartButton() {
-  const { products } = useSelector((state) => state.cart);
-  console.log(products.length);
+  const { totalQuantity } = useSelector((state) => state.cart);
 
-  if (products.length < 1) {
-    console.log("No Products 😔");
+  console.log("====================================");
+  console.log(totalQuantity);
+  console.log("====================================");
+
+  if (totalQuantity.value < 2) {
+    console.log("!23");
+  } else {
+    console.log("sdsd");
   }
   return (
     <div className="fixed">
@@ -16,7 +21,7 @@ export default function CartButton() {
           <div className="sameRow">
             <div className="buttonDiv bg-b-orange">
               <i className="fas fa-cart-plus"></i>
-              <span> {products.length}</span>
+              <span> {totalQuantity}</span>
             </div>
           </div>
         </div>

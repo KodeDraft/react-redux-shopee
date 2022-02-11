@@ -3,18 +3,19 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
-  const { products } = useSelector((state) => state.cart);
-  console.log(products);
+  // const { products } = useSelector((state) => state.cart);
 
-  const cost = products.map((itr) => {
-    return itr.price;
-  });
-  const totalPrice = cost.reduce((prevValue, currValue) => {
-    return prevValue + currValue;
-  }, 0);
-  const discount = (10 / 100) * totalPrice;
-  const renderProducts = products.map((product) => {
-    const { id, title, price, category, image, description } = product;
+  // RETRIVING DATA
+  const cartData = useSelector((state) => state.cart);
+  const originalPrice = cartData.totalPrice;
+  const totalQuantity = cartData.totalQuantity;
+  const discountedAmount = (10 / 100) * originalPrice;
+  const totalAmount = originalPrice - discountedAmount;
+
+  const renderProducts = cartData.products.map((product) => {
+    const { id, title, price, category, image, description, quantity } =
+      product;
+
     return (
       <div className="four wide column" key={id}>
         <div className="ui link cards">
@@ -26,6 +27,7 @@ export default function Cart() {
               <div className="header">{description}</div>
               <div className="meta price">$ {price}</div>
               <div className="meta">{category}</div>
+              <div className="meta">Quantity: {quantity}</div>
             </div>
           </div>
         </div>
@@ -34,19 +36,27 @@ export default function Cart() {
   });
   return (
     <>
+      <h2 className="avoidHeaderView">
+        Your Cart <i className="fas fa-cart-plus"></i>
+      </h2>
       <div className="ui grid container">{renderProducts}</div>
       <div className="details">
         <br />
         <br />
-        <span className="label strikeOut">Original Price $ {totalPrice}</span>
+        <span className="label">Total Quantity: {totalQuantity}</span>
+        <br />
+        <span className="label strikeOut">
+          Original Price $ {originalPrice}
+        </span>
         <br />
         <span className="label">
-          Discount Price $ {parseFloat(discount).toFixed(2)}
+          Discount Price: $ {parseFloat(discountedAmount).toFixed(2)} (10% of{" "}
+          {originalPrice})
         </span>
         <br />
-        <span className="label marginTopSmall">
-          Total Amount: $ {parseFloat(totalPrice - discount).toFixed(2)}
-        </span>
+        <p className="labelFontBig">
+          Total Amount: $ {parseFloat(totalAmount).toFixed(2)}
+        </p>
         <button className="navigationBtn">CHECKOUT / BUY</button>
       </div>
       <Link to="/">

@@ -19,16 +19,3 @@ export const removeSelectedProduct = (products) => {
     type: ActionTypes.REMOVE_SELECTED_PRODUCT,
   };
 };
-export const increaseCounter = () => {
-  return {
-    type: ActionTypes.INCREASE_COUNTER,
-    payload: "increase",
-  };
-};
-
-export const decreaseCounter = () => {
-  return {
-    type: ActionTypes.DECREASE_COUNTER,
-    payload: "decrease",
-  };
-};
