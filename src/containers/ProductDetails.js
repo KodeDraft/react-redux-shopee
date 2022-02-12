@@ -27,7 +27,7 @@ export default function ProductDetails() {
     const response = await axios
       .get(`https://fakestoreapi.com/products/${productId}`)
       .catch((err) => {
-        console.log("Err: ", err);
+        alert("Check Your Internet Connection");
       });
 
     dispatch(selectedProduct(response.data));

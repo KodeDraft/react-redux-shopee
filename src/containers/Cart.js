@@ -57,10 +57,10 @@ export default function Cart() {
         <p className="labelFontBig">
           Total Amount: $ {parseFloat(totalAmount).toFixed(2)}
         </p>
-        <button className="navigationBtn">CHECKOUT / BUY</button>
+        <button className="navigationBtn">BUY</button>
       </div>
       <Link to="/">
-        <button className="navigationBtn">Navigate To Home Screen</button>
+        <button className="navigationBtn">Continue Shopping</button>
       </Link>
     </>
   );

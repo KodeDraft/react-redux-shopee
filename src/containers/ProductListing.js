@@ -14,12 +14,12 @@ export default function ProductListing() {
     fetchProducts();
   }, []);
 
-  console.log("Products: ", products);
   const fetchProducts = async () => {
     const response = await axios
-      .get("https://fakestoreapi.com/products") 
+      .get("https://fakestoreapi.com/products")
       .catch((err) => {
-        console.log("Err: ", err);
+        // console.log("Err: ", err);
+        alert("Error Getting The Products.. Check Your Internet Connection");
       });
     dispatch(setProducts(response.data));
   };
